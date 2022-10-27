@@ -1,0 +1,96 @@
+<div class="container">
+  <h2>Добавление теста</h2>
+  <form [formGroup]="form">
+    <!-- <div class="form-group">
+      <label for="id">Id</label>
+      <input
+        type="text"
+        class="form-control"
+        id="id"
+        formControlName="id"
+        [readonly]="true"
+      />
+    </div> -->
+    <div class="form-group">
+      <label for="testName">Название теста</label>
+      <input
+        type="text"
+        class="form-control"
+        id="testName"
+        [readonly]="false"
+        formControlName="testName"
+      />
+      <div
+        *ngIf="
+          this.form.controls['testName'].invalid &&
+          this.form.controls['testName'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['testName'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="teacherName">Автор теста</label>
+      <select
+        formControlName="teacherName"
+        class="form-select"
+        aria-label="Default select example"
+        aria-selected="false"
+      >
+        <option *ngFor="let teacher of teachers">
+          {{ teacher.teacherName }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          this.form.controls['teacherName'].invalid &&
+          this.form.controls['teacherName'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['teacherName'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="subjectName">Предмет</label>
+      <select
+        formControlName="subjectName"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        <option *ngFor="let subject of subjects">
+          {{ subject.name }}
+        </option>
+      </select>
+
+      <a href="/subjects/add" class="btn btn-danger">Добавить предмет</a>
+      <button
+        [disabled]="this.form.controls['subjectName'].value.length == 0"
+        type="button"
+        class="btn btn-danger"
+        (click)="deleteSubject()"
+      >
+        Удалить выбранный предмет
+      </button>
+    </div>
+    <hr />
+    <button
+      [disabled]="form.invalid"
+      type="submit"
+      class="btn btn-dangerbutton"
+      class="btn btn-danger"
+      (click)="saveTest()"
+    >
+      Перейти к добавлению вопросов
+    </button>
+  </form>
+</div>

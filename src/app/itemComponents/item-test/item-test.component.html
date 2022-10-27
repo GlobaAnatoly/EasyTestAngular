@@ -1,0 +1,17 @@
+<div
+  class="card"
+  style="width: 50rem; display: inline-block; padding: 30px; margin: 20px"
+>
+  <div class="card-body">
+    <h5 class="card-title">{{ test.name }}</h5>
+
+    <div class="card-text" style="width: 300px">
+      <b>Автор теста: </b>{{ getTeacherName(test.teacherId) }}
+    </div>
+    <div class="card-text" style="width: 300px">
+      <b>Предмет: </b>{{ getSubjectName(test.subjectId) }}
+    </div>
+  </div>
+  <a href="/tests/{{ test.id }}" class="card-link">Детальнее</a>
+  <a href="/tests/edit/{{ test.id }}" class="card-link">Редактировать</a>
+</div>

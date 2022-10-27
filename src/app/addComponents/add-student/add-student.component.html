@@ -1,0 +1,128 @@
+<div class="container">
+  <h2>Добавление ученика</h2>
+  <form [formGroup]="form" (ngSubmit)="showAlert()">
+    <!-- <div class="form-group">
+      <label for="id">Id</label>
+      <input
+        type="text"
+        class="form-control"
+        id="id"
+        formControlName="id"
+        [readonly]="true"
+      />
+    </div> -->
+    <div class="form-group">
+      <label for="studentName">Имя ученика</label>
+      <input
+        type="text"
+        class="form-control"
+        id="studentName"
+        [readonly]="false"
+        formControlName="studentName"
+      />
+      <div
+        *ngIf="
+          this.form.controls['studentName'].invalid &&
+          this.form.controls['studentName'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['studentName'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+        <small
+          *ngIf="!this.form.controls['studentName'].touched"
+          style="color: red"
+        >
+          Внесите изменения</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="studentLogin">Логин ученика</label>
+      <input
+        type="text"
+        class="form-control"
+        id="studentLogin"
+        [readonly]="false"
+        formControlName="studentLogin"
+      />
+      <div
+        *ngIf="
+          this.form.controls['studentLogin'].invalid &&
+          this.form.controls['studentLogin'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['studentLogin'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="studentPassword">Пароль</label>
+      <input
+        type="password"
+        class="form-control"
+        id="studentPassword"
+        [readonly]="false"
+        formControlName="studentPassword"
+      />
+      <div
+        *ngIf="
+          this.form.controls['studentPassword'].invalid &&
+          this.form.controls['studentPassword'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['studentPassword'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="studentPasswordConfirm">Подтвердите пароль</label>
+      <input
+        type="password"
+        class="form-control"
+        id="studentPasswordConfirm"
+        [readonly]="false"
+        formControlName="studentPasswordConfirm"
+      />
+      <div
+        *ngIf="
+          (this.form.controls['studentPasswordConfirm'].invalid &&
+            this.form.controls['studentPasswordConfirm'].touched) ||
+          this.form.controls['studentPasswordConfirm'].value !=
+            this.form.controls['studentPassword'].value
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['studentPasswordConfirm'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+        <br />
+        <small
+          *ngIf="
+            this.form.controls['studentPasswordConfirm'].errors?.['required']||
+              this.form.controls['studentPasswordConfirm'].value !=
+              this.form.controls['studentPassword'].value
+            "
+          style="color: red"
+          >Пароли не совпадают</small
+        >
+      </div>
+    </div>
+    <button [disabled]="form.invalid" type="submit" class="btn btn-danger">
+      Сохранить
+    </button>
+  </form>
+</div>

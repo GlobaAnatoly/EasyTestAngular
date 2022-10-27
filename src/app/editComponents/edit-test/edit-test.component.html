@@ -1,0 +1,149 @@
+<div class="container">
+  <h2>Информация о тесте</h2>
+  <form [formGroup]="form" (ngSubmit)="editTest()">
+    <!-- <div class="form-group">
+      <label for="id">Id</label>
+
+      <input
+        type="text"
+        class="form-control"
+        id="id"
+        formControlName="id"
+        [readonly]="true"
+      />
+    </div> -->
+    <div class="form-group">
+      <label for="testName">Название теста</label>
+      <input
+        type="text"
+        class="form-control"
+        id="testName"
+        [readonly]="false"
+        formControlName="testName"
+      />
+      <div
+        *ngIf="
+          this.form.controls['testName'].invalid &&
+          this.form.controls['testName'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['testName'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+        <small
+          *ngIf="!this.form.controls['testName'].touched"
+          style="color: red"
+        >
+          Внесите изменения</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="teacherName">Автор теста</label>
+      <select
+        formControlName="teacherName"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        <option *ngFor="let teacher of teachers">
+          {{ teacher.teacherName }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          this.form.controls['teacherName'].invalid &&
+          this.form.controls['teacherName'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['teacherName'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+        <small
+          *ngIf="!this.form.controls['teacherName'].touched"
+          style="color: red"
+        >
+          Внесите изменения</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="subjectName">Предмет</label>
+      <!-- <input
+        type="text"
+        class="form-control"
+        id="subjectName"
+        [readonly]="false"
+        formControlName="subjectName"
+      /> -->
+      <select
+        formControlName="subjectName"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        <option *ngFor="let subjectName of subjects">
+          {{ subjectName.name }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          this.form.controls['subjectName'].invalid &&
+          this.form.controls['subjectName'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['subjectName'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+        <small
+          *ngIf="!this.form.controls['subjectName'].touched"
+          style="color: red"
+        >
+          Внесите изменения</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="questions">Список вопросов</label>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Текст вопроса</th>
+            <th scope="col">Тип вопроса</th>
+            <th scope="col">Стоимость</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of questions">
+            <th scope="row">{{ i.id }}</th>
+            <td>{{ i.name }}</td>
+            <td>{{ getQuestionTypeName(i.questionTypeId) }}</td>
+            <td>{{ i.value }}</td>
+            <td><a href="/questions/edit/{{ i.id }}">Редактировать</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button [disabled]="form.invalid" type="submit" class="btn btn-danger">
+      Сохранить
+    </button>
+    <button type="button" class="btn btn-danger" (click)="redirect()">
+      Отменить
+    </button>
+    <button type="button" class="btn btn-danger" (click)="showAlert()">
+      Удалить
+    </button>
+    <button type="button" class="btn btn-danger" (click)="goToAddQuestion()">
+      Добавить вопрос
+    </button>
+  </form>
+</div>

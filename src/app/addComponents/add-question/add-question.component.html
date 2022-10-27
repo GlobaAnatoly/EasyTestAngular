@@ -1,0 +1,156 @@
+<div class="container">
+  <h2>Добавление вопроса</h2>
+  <form [formGroup]="form">
+    <!-- <div class="form-group">
+      <label for="id">Id</label>
+
+      <input
+        type="text"
+        class="form-control"
+        id="id"
+        formControlName="id"
+        [readonly]="true"
+      />
+    </div> -->
+    <div class="form-group">
+      <label for="testName">Из какого теста</label>
+      <input
+        type="text"
+        class="form-control"
+        id="testName"
+        [readonly]="true"
+        formControlName="testName"
+      />
+      <div
+        *ngIf="
+          this.form.controls['testName'].invalid &&
+          this.form.controls['testName'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['testName'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+        <small
+          *ngIf="!this.form.controls['testName'].touched"
+          style="color: red"
+        >
+          Внесите изменения</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="questionName">Название вопроса</label>
+      <input
+        type="text"
+        class="form-control"
+        id="questionName"
+        [readonly]="false"
+        formControlName="questionName"
+      />
+      <div
+        *ngIf="
+          this.form.controls['questionName'].invalid &&
+          this.form.controls['questionName'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['questionName'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+        <small
+          *ngIf="!this.form.controls['questionName'].touched"
+          style="color: red"
+        >
+          Внесите изменения</small
+        >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="questionType">Тип вопроса</label>
+      <select
+        formControlName="questionType"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        <option *ngFor="let questionType of questionTypes">
+          {{ questionType.name }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          this.form.controls['questionType'].invalid &&
+          this.form.controls['questionType'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['questionType'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+        <small
+          *ngIf="!this.form.controls['questionType'].touched"
+          style="color: red"
+        >
+          Внесите изменения</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="value">Стоимость вопроса</label>
+      <input
+        type="number"
+        class="form-control"
+        id="value"
+        [readonly]="false"
+        formControlName="value"
+        min="0"
+      />
+      <div
+        *ngIf="
+          this.form.controls['value'].invalid &&
+          this.form.controls['value'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['value'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+        <small *ngIf="!this.form.controls['value'].touched" style="color: red">
+          Внесите изменения</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="formFile" class="form-label"
+        >Выберете файл изображения если необходимо</label
+      >
+      <input
+        class="form-control"
+        type="file"
+        id="formFile"
+        formControlName="picture"
+        (change)="getPicture($event)"
+        accept=".jpeg,.png,.jpg"
+      />
+    </div>
+    <hr />
+    <button
+      [disabled]="form.invalid"
+      type="submit"
+      class="btn btn-dangerbutton"
+      class="btn btn-danger"
+      (click)="saveQuestion()"
+    >
+      Перейти к добавлению ответов
+    </button>
+  </form>
+</div>

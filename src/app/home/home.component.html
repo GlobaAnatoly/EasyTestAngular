@@ -1,0 +1,39 @@
+<div class="card">
+  <h5 class="card-header">Учителя</h5>
+  <div class="card-body">
+    <h5 class="card-title">
+      Количество зарегестрированых учителей: {{ this.teachers.length }}
+    </h5>
+    <!-- <p class="card-text">
+      With supporting text below as a natural lead-in to additional content.
+    </p> -->
+    <a href="/teachers/add" class="btn btn-danger">Добавить учителя</a>
+    <a href="/teachers" class="btn btn-danger">Список учителей</a>
+  </div>
+</div>
+<div class="card">
+  <h5 class="card-header">Ученики</h5>
+  <div class="card-body">
+    <h5 class="card-title">
+      Количество зарегестрированых учеников: {{ this.students.length }}
+    </h5>
+    <!-- <p class="card-text">
+      With supporting text below as a natural lead-in to additional content.
+    </p> -->
+    <a href="/students/add" class="btn btn-danger">Добавить ученика</a>
+    <a href="/students" class="btn btn-danger">Список учеников</a>
+  </div>
+</div>
+<div class="card">
+  <h5 class="card-header">Тесты</h5>
+  <div class="card-body">
+    <h5 class="card-title">
+      Количество созданых тестов: {{ this.tests.length }}
+    </h5>
+    <!-- <p class="card-text">
+      With supporting text below as a natural lead-in to additional content.
+    </p> -->
+    <a href="/tests/add" class="btn btn-danger">Добавить тест</a>
+    <a href="/tests" class="btn btn-danger">Список тестов</a>
+  </div>
+</div>

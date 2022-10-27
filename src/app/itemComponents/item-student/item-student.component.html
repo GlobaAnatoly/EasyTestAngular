@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ student.studentName }}</h5>
+
+    <div class="card-text" style="width: 300px">
+      {{ student.studentLogin }}
+    </div>
+  </div>
+  <a href="/students/{{ student.id }}" class="card-link">Детальнее</a>
+  <a href="/students/edit/{{ student.id }}" class="card-link">Редактировать</a>
+</div>

@@ -1,0 +1,153 @@
+<div class="container">
+  <h2>Добавление варианта ответа</h2>
+  <form [formGroup]="form">
+    <!-- <div class="form-group">
+      <label for="id">Id</label>
+
+      <input
+        type="text"
+        class="form-control"
+        id="id"
+        formControlName="id"
+        [readonly]="true"
+      />
+    </div> -->
+
+    <div class="form-group">
+      <label for="questionName">Название вопроса</label>
+      <input
+        type="text"
+        class="form-control"
+        id="questionName"
+        [readonly]="true"
+        formControlName="questionName"
+      />
+      <div
+        *ngIf="
+          this.form.controls['questionName'].invalid &&
+          this.form.controls['questionName'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['questionName'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+        <small
+          *ngIf="!this.form.controls['questionName'].touched"
+          style="color: red"
+        >
+          Внесите изменения</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="questionTypeName">Тип вопроса</label>
+      <input
+        type="text"
+        class="form-control"
+        id="questionTypeName"
+        [readonly]="true"
+        formControlName="questionTypeName"
+      />
+      <div
+        *ngIf="
+          this.form.controls['questionTypeName'].invalid &&
+          this.form.controls['questionTypeName'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['questionTypeName'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+        <small
+          *ngIf="!this.form.controls['questionTypeName'].touched"
+          style="color: red"
+        >
+          Внесите изменения</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="answerName">Текст ответа</label>
+      <input
+        type="text"
+        class="form-control"
+        id="answerName"
+        [readonly]="false"
+        formControlName="answerName"
+      />
+      <div
+        *ngIf="
+          this.form.controls['answerName'].invalid &&
+          this.form.controls['answerName'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['answerName'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+        <small
+          *ngIf="!this.form.controls['answerName'].touched"
+          style="color: red"
+        >
+          Внесите изменения</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="isCorrect">Правильность</label>
+      <select
+        formControlName="isCorrect"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        <option>true</option>
+        <option>false</option>
+      </select>
+      <div
+        *ngIf="
+          this.form.controls['isCorrect'].invalid &&
+          this.form.controls['isCorrect'].touched
+        "
+        class="validation"
+      >
+        <small
+          *ngIf="this.form.controls['isCorrect'].errors?.['required']"
+          style="color: red"
+          >Поле не может быть пустым</small
+        >
+        <small
+          *ngIf="!this.form.controls['isCorrect'].touched"
+          style="color: red"
+        >
+          Внесите изменения</small
+        >
+      </div>
+    </div>
+    <hr />
+    <button
+      [disabled]="form.invalid"
+      type="submit"
+      class="btn btn-dangerbutton"
+      class="btn btn-danger"
+      (click)="saveAnswer()"
+    >
+      Добавить ответ
+    </button>
+    <hr />
+    <button
+      type="submit"
+      class="btn btn-dangerbutton"
+      class="btn btn-danger"
+      (click)="goToQuestions()"
+    >
+      Вернуться к вопросу
+    </button>
+  </form>
+</div>
